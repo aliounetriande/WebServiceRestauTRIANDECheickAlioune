@@ -2,6 +2,8 @@ package com.isge.ic3.webServiceRestoTRIANDE.controller;
 
 import com.isge.ic3.webServiceRestoTRIANDE.model.Client;
 import com.isge.ic3.webServiceRestoTRIANDE.service.ClientService;
+import com.isge.ic3.webServiceRestoTRIANDE.exception.ClientNotFoundException;
+import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +30,12 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
+    public ResponseEntity<Client> createClient(@Valid @RequestBody Client client) {
         return ResponseEntity.ok(clientService.createClient(client));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody Client client) {
+    public ResponseEntity<Client> updateClient(@PathVariable Long id, @Valid @RequestBody Client client) {
         return ResponseEntity.ok(clientService.updateClient(id, client));
     }
 

@@ -1,5 +1,6 @@
 package com.isge.ic3.webServiceRestoTRIANDE.service;
 
+import com.isge.ic3.webServiceRestoTRIANDE.exception.MenuNotFoundException;
 import com.isge.ic3.webServiceRestoTRIANDE.model.Menu;
 import com.isge.ic3.webServiceRestoTRIANDE.repository.MenuRepository;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,8 @@ public class MenuService {
     }
 
     public Menu getMenuById(Long id) {
-        return menuRepository.findById(id).orElseThrow(() -> new RuntimeException("Menu non trouvé"));
+        return menuRepository.findById(id)
+                .orElseThrow(() -> new MenuNotFoundException(id));
     }
 
     public Menu createMenu(Menu menu) {

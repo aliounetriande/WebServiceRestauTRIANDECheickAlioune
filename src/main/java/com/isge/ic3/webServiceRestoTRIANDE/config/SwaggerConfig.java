@@ -1,9 +1,11 @@
 package com.isge.ic3.webServiceRestoTRIANDE.config;
 
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;
 
 @Configuration
 public class SwaggerConfig {
@@ -11,8 +13,16 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("API REST de Restaurant")
+                .components(new Components())
+                .info(new Info()
+                        .title("API de Gestion de Restaurant")
                         .version("1.0")
-                        .description("Documentation des API REST du système de gestion des plats."));
+                        .description("Documentation des API restau Alioune.")
+                        .contact(new Contact()
+                                .name("Support Technique")
+                                .email("support@resto.com")
+                                .url("https://resto.com")
+                        )
+                );
     }
 }
